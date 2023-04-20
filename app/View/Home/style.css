@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.z-depth-0 {
+    box-shadow: none !important;
+}
+
+.z-depth-1, .card {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.z-depth-2 {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.z-depth-3 {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.z-depth-4 {
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.z-depth-5 {
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+.z-depth-6 {
+    box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: "RobotoDraft", arial, sans-serif;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(https://source.unsplash.com/VviFtDJakYk);
+    background-size: cover;
+    filter: grayscale(1);
+}
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: radial-gradient(center, rgba(0, 0, 0, 0.34) -10%, rgba(68, 68, 68, 0.88) 120%);
+}
+
+#credits {
+    text-shadow: 1px 1px 2px #222;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #fff;
+    z-index: 9999;
+}
+#credits i.mdi {
+    font-size: 28px;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+#credits i.mdi.mdi-heart {
+    color: #FF432F;
+}
+#credits i.mdi.mdi-codepen {
+    color: #2AE052;
+}
+#credits i.mdi.mdi-xml {
+    color: #FFE02F;
+}
+
+.card {
+    width: 250px;
+    height: 180px;
+    background-color: #FAFAFA;
+    z-index: 99;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.card-face-1 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+.card-face-1 .name {
+    font-family: "Ubuntu";
+    font-size: 24px;
+    font-weight: 200;
+    padding: 0 10px;
+    margin-bottom: 5px;
+}
+.card-face-1 .subname {
+    color: #bbb;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 20px 0 5px;
+}
+
+.pulse-thumbnail {
+    position: relative;
+}
+.pulse-thumbnail:hover::after {
+    border: 2px solid rgba(21, 101, 192, 0.32);
+    -webkit-animation: grow 1s ease-out infinite;
+    animation: grow 1s ease-out infinite;
+}
+.pulse-thumbnail::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110px;
+    height: 110px;
+    background-color: transparent;
+    transform: translate(-50%, -51%);
+    border-radius: 50%;
+    transform-origin: top left;
+    z-index: 0;
+}
+
+@-webkit-keyframes grow {
+    0% {
+        transform: scale(0.9) translate(-50%, -51%);
+    }
+    30% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.2) translate(-50%, -51%);
+        opacity: 0;
+    }
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0.9) translate(-50%, -51%);
+    }
+    30% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.2) translate(-50%, -51%);
+        opacity: 0;
+    }
+}
+.img-thumbnail {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    border-radius: 50%;
+    margin: 40px 0;
+    z-index: 99;
+    cursor: pointer;
+}
+
+ul.social-contact {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: space-between;
+    width: 55%;
+}
+ul.social-contact i.mdi {
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+    color: #333;
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+ul.social-contact i.mdi::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(1.1);
+    box-shadow: inset 0px 0px 1px 0px rgba(51, 51, 51, 0.12);
+    transition: box-shadow 0.5s ease-out;
+    border-radius: 50%;
+    z-index: -1;
+}
+ul.social-contact i.mdi:hover::after {
+    box-shadow: inset 0px 0px 1px 40px rgba(51, 51, 51, 0.12);
+}
+
+.divider {
+    position: relative;
+    margin: 20px 0;
+    width: 100%;
+}
+.divider::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    background-color: rgba(204, 204, 204, 0.33);
+    width: 50%;
+}
