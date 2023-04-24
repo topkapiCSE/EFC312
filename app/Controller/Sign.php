@@ -16,6 +16,7 @@ class Sign extends BaseController {
     private function index(){
         $this->view("Sign");
     }
+
     private function register(){
         $model = new SignModel();
         $data = [
@@ -26,15 +27,15 @@ class Sign extends BaseController {
         ];
 
         if($model->isRegistered($data["email"])){
-            $this->toast("error","Bu e-posta adresi zaten kayıtlı");
+            $this->toast("error",text("Sign.registeredEmail"));
             $this->view("Sign");
         }
 
         if($model->register($data)){
-            $this->toast("success","Kayıt başarılı.");
+            $this->toast("success",text("Sign.success"));
             $this->view("Login");
         }else{
-            $this->toast("error","Bir hata meydana geldi");
+            $this->toast("error",text("Sign.errorUnkown"));
             $this->view("Sign");
         }
     }

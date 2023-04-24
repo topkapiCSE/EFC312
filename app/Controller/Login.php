@@ -24,10 +24,10 @@ class Login extends BaseController {
             $_SESSION["role"] = $role;
             $_SESSION["email"] = $email;
 
-            $this->toast("success","Giriş başarılı.");
-            header("Refresh:3; url=http://localhost/ders/Home",true,200);
+            $this->toast("success",text("Login.success"));
+            header("Refresh:3; url=".BASE_URL."/Home",true,200);
         }else{
-            $this->toast("error","Kullanıcı adı veya şifre hatalı");
+            $this->toast("error",text("Login.error"));
             $this->view("Login");
         }
     }

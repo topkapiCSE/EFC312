@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-face-1">
         <div class="info">
-            <form style="margin: 15px" action="http://localhost/ders/Home/add" method="post">
+            <form style="margin: 15px" action="<?php echo BASE_URL;?>/Home/add" method="post">
                 <input name="title" placeholder="title">
                 <div class="divider"></div>
                 <textarea name="value" rows="5" placeholder="Value"></textarea><br>
@@ -24,7 +24,7 @@ for($i=0;$i<count($data);$i++){
 
 ?>
     <div class="card">
-        <a href="http://localhost/ders/Home/delete/<?php echo $data[$i]["id"];?>"><span>X</span></a>
+        <a href="<?php echo BASE_URL;?>/Home/delete/<?php echo $data[$i]["id"];?>"><span>X</span></a>
         <div class="card-face-1">
             <div class="info">
                 <h1 class="name"><?php echo $data[$i]["title"];?></h1>

@@ -12,8 +12,8 @@ class Home extends BaseController
     {
         session_start();
         if(!@$_SESSION["email"]){
-            $this->toast("warning","Giriş yapmalısınız");
-            header("Refresh:2; url=http://localhost/ders/Login",true,200);
+            $this->toast("warning",text("Home.mustLogin"));
+            header("Refresh:2; url=".BASE_URL."/Login",true,200);
         }else{
             $model = new SignModel();
             $this->userId = $model->getUserId($_SESSION["email"]);
@@ -45,18 +45,18 @@ class Home extends BaseController
         $permissionId = $permissionModel->getPermissionId("create");
         $userRole = $permissionModel->getUserRole($this->userId);
         if(!$permissionModel->checkRolePermission($userRole,$permissionId)){
-            $this->toast("error","Bu işlem için yetkiniz bulunmuyor");
-            header("Refresh:3; url=http://localhost/ders/Home",true,200);
+            $this->toast("error",text("Home.permissionDenied"));
+            header("Refresh:3; url=".BASE_URL."/Home",true,200);
             exit();
         }
 
         $homeModel = new HomeModel();
         if($homeModel->create($data)){
-            $this->toast("success","Kayıt başarılı");
-            header("Refresh:2; url=http://localhost/ders/Home",true,200);
+            $this->toast("success",text("Home.successAdd"));
+            header("Refresh:2; url=".BASE_URL."/Home",true,200);
         }else{
-            $this->toast("error","Bir hata meydana geldi");
-            header("Refresh:2; url=http://localhost/ders/Home",true,200);
+            $this->toast("error",text("Home.errorUnkown"));
+            header("Refresh:2; url=".BASE_URL."/Home",true,200);
         }
     }
 
@@ -67,18 +67,18 @@ class Home extends BaseController
         $permissionId = $permissionModel->getPermissionId("delete");
         $userRole = $permissionModel->getUserRole($this->userId);
         if(!$permissionModel->checkRolePermission($userRole,$permissionId)){
-            $this->toast("error","Bu işlem için yetkiniz bulunmuyor");
-            header("Refresh:3; url=http://localhost/ders/Home",true,200);
+            $this->toast("error",text("Home.permissionDenied"));
+            header("Refresh:3; url=".BASE_URL."/Home",true,200);
             exit();
         }
 
         $homeModel = new HomeModel();
         if($homeModel->delete($id)){
-            $this->toast("success","Başarıyla silindi");
-            header("Refresh:2; url=http://localhost/ders/Home",true,200);
+            $this->toast("success",text("Home.successDelete"));
+            header("Refresh:2; url=".BASE_URL."/Home",true,200);
         }else{
-            $this->toast("error","Bir hata meydana geldi");
-            header("Refresh:2; url=http://localhost/ders/Home",true,200);
+            $this->toast("error",text("Home.errorUnkown"));
+            header("Refresh:2; url=".BASE_URL."/Home",true,200);
         }
     }
 

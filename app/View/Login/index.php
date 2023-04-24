@@ -43,7 +43,7 @@
                     vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
         </g>
   </svg>
-    <form action="http://localhost/ders/Login/check" method="post">
+    <form action="<?php echo BASE_URL;?>/Login/check" method="post">
         <div class="email">
             <label for="email">Email Address</label>
             <div class="sec-2">

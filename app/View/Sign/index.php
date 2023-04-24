@@ -32,7 +32,7 @@
       <polygon style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
     </g>
   </svg>
-    <form class="screen-1" action="http://localhost/ders/Sign/register" method="post">
+    <form class="screen-1" action="<?php echo BASE_URL;?>/Sign/register" method="post">
 
         <div class="email">
             <label for="email">Email Address</label>
