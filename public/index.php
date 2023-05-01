@@ -7,6 +7,9 @@ define("CONTROLLERS_PATH",APP_PATH."Controller/");
 define("VIEW_PATH",APP_PATH."View/");
 define("LANG_PATH",APP_PATH."Language/");
 define("MODEL_PATH",APP_PATH."Model/");
+define("HELPER_PATH",APP_PATH."Helper/");
+
+
 
 $params = @$_GET["p"];
 if($params){

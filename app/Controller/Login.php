@@ -14,15 +14,25 @@ class Login extends BaseController {
         $this->view("Login");
     }
 
+
+    private function logout(){
+        Services::jwt()->destroy();
+        $this->toast("success",text("Login.logout"));
+        header("Refresh:3; url=".BASE_URL."/Home",true,200);
+    }
+
     private function check(){
         $email = $_POST["email"];
         $password = $_POST["password"];
         $model = new LoginModel();
         if($model->checkUser($email,$password)){
             $role = $model->getUserRole($email);
-            session_start();
-            $_SESSION["role"] = $role;
-            $_SESSION["email"] = $email;
+            $userId = $model->getUserId($email);
+
+            Services::jwt()->generateToken([
+                "role" => $role,
+                "userId" => $userId
+            ]);
 
             $this->toast("success",text("Login.success"));
             header("Refresh:3; url=".BASE_URL."/Home",true,200);

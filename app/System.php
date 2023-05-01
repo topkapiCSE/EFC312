@@ -1,5 +1,8 @@
 <?php
 
+require "defines.php";
+require "Services.php";
+
 class System{
     public static function run($class = null, $method = "index", $parameter = null){
 

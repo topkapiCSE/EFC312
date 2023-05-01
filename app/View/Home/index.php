@@ -5,7 +5,47 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?php echo VIEW_URL; ?>Home/style.css">
 </head>
+<style>
+    .countdowner{
+        z-index: 1;
+        align-self: baseline;
+        background: #0ABF30;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded" , function (){
+        var counter = document.getElementById("countdown");
+        var timeleft = <?php echo Services::jwt()->getExpireTime();?>;
+        counter.innerHTML = secondsToHms(timeleft);
+
+        var downloadTimer = setInterval(function(){
+            if(timeleft <= 0){
+                window.location.href = "<?php echo BASE_URL;?>";
+                clearInterval(downloadTimer);
+            }
+            counter.innerHTML = secondsToHms(timeleft);
+            timeleft -= 1;
+        }, 1000);
+    });
+
+    function secondsToHms(d) {
+        d = Number(d);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+
+        m = m<10 ? "0"+m:m;
+        s = s<10 ? "0"+s:s;
+        return m + ":" + s;
+    }
+
+
+</script>
 <body>
+<div class="countdowner">
+    Oturumunuz <span id="countdown"></span> sonra sonlanacaktır.
+</div>
+
 <div class="card">
     <div class="card-face-1">
         <div class="info">
@@ -18,6 +58,9 @@
         </div>
     </div>
 </div>
+
+<br>
+
 
 <?php
 for($i=0;$i<count($data);$i++){

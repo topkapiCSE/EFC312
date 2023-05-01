@@ -2,6 +2,7 @@
 
 return [
     "success" => "Giriş başarılı.",
-    "error" => "Kullanıcı adı veya şifre hatalı"
+    "error" => "Kullanıcı adı veya şifre hatalı",
+    "logout" => "Çıkış başarılı"
 
 ];

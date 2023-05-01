@@ -7,17 +7,13 @@ require MODEL_PATH . "HomeModel.php";
 
 class Home extends BaseController
 {
-    private $userId;
     public function init($method = null, $parameter = null)
     {
-        session_start();
-        if(!@$_SESSION["email"]){
+        if($this->userId == -1){
             $this->toast("warning",text("Home.mustLogin"));
             header("Refresh:2; url=".BASE_URL."/Login",true,200);
-        }else{
-            $model = new SignModel();
-            $this->userId = $model->getUserId($_SESSION["email"]);
         }
+
         if (method_exists($this, $method))
             return $this->{$method}($parameter);
         else
