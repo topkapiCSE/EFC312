@@ -1,6 +1,5 @@
 <?php
 
-
 class Services{
 
     private static $jwt = null;
@@ -12,6 +11,11 @@ class Services{
         }
 
         return self::$jwt;
+    }
+    public static function logger($class){
+        require_once APP_PATH."log_defines.php";
+        require_once HELPER_PATH."Logger.php";
+        return new Logger($class);
     }
 
 }

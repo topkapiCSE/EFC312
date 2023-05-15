@@ -199,7 +199,7 @@ class Jwt
      * @uses jsonEncode
      * @uses urlsafeB64Encode
      */
-    private function encode($payload, $key = "36HGtd13fsLk551AX2qfg4fp==", $alg = 'HS384', $keyId = null, $head = null)
+    public function encode($payload, $key = "36HGtd13fsLk551AX2qfg4fp==", $alg = 'HS384', $keyId = null, $head = null)
     {
         $header = array('typ' => 'Jwt', 'alg' => $alg);
         if ($keyId !== null) {

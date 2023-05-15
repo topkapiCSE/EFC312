@@ -27,14 +27,17 @@ class Sign extends BaseController {
         ];
 
         if($model->isRegistered($data["email"])){
+            Services::logger(SIGN_LOG_DEFINES::class)->create( SIGN_LOG_DEFINES::ALREADY_REGISTERED,$data["email"]);
             $this->toast("error",text("Sign.registeredEmail"));
             $this->view("Sign");
         }
 
         if($model->register($data)){
+            Services::logger(SIGN_LOG_DEFINES::class)->create( SIGN_LOG_DEFINES::SUCCESS,$data["email"]);
             $this->toast("success",text("Sign.success"));
             $this->view("Login");
         }else{
+            Services::logger(SIGN_LOG_DEFINES::class)->create( SIGN_LOG_DEFINES::UNKNOWN,$data);
             $this->toast("error",text("Sign.errorUnkown"));
             $this->view("Sign");
         }
